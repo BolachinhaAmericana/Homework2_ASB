@@ -63,7 +63,11 @@ def getAccnList():
     for line in seqFastaEnterRemover().split('\n'):
         if '>' in line:
             line = line.removeprefix('>')
-            accnList.append(line)
+            if len(line) > 99:
+                Error='Error, Sequences References Can not Have More Then 99 Characters!!!'
+                return Error
+            else:
+                accnList.append(line)
     return accnList
 
 def getSeqList():
